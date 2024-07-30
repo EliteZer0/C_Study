@@ -437,19 +437,34 @@ int main(){
     
     int p = 2;
     int q = 2;
-    while(a[p][q] < 2 && p<10 && q<10 && q>1){
+     
+    for (int q = 2; q<=10; q++){
+        if (a[p][q] == 2) {
+                a[p][q] = 9;
+                break;
+            }
         if (a[p][q] == 0) {
             a[p][q] = 9;
-            q++;
-        } 
-        else if (a[p][q] == 1) {
-            p++;
-            q--;
+        }
+        if (a[p][q] == 1) {
+            p += 1; 
+            q -= 1;
+            
+            if (a[p][q] == 2) {
+                a[p][q] = 9;
+                break;
+            }
+            
+            if (p>9){
+            break;
+            }
+            
             a[p][q] = 9;
-            q++;
+        }
+        if (p>9){
+            break;
         }
     }
-    
     for(int m = 1; m<=10; m++){
         for(int n = 1; n<=10; n++){
             printf("%d ", a[m][n]);
